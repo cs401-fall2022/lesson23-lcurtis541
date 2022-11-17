@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Landon's Blog 
+  p Below are the blog posts.
+
+  ul 
+    each item in data 
+      li 
+        span #{item.blog_title} - #{item.blog_txt} 
+      br
+  br
+
+  form(method="POST" action="/add")
+    p Title
+    input(type="txt" name="blog_title" id="blog_title")
+    p Body
+    input(type="txt" name="blog_txt" id="blog_txt")
+    button(type="submit")
+      p Submit 
+
+  form(method="POST" action="/delete")
+    button(type="submit")
+      p Delete Top
