@@ -1,13 +1,20 @@
 extends layout
 
 block content
-  h1 Landon's Blog 
-  p Below are the blog posts.
+  h1(class="title") Landon's Blog 
+  hr
 
-  ul 
+  div(class="button_container")
+    form(method="POST" action="/delete")
+      button(class= "delete_post_button" type="submit") Delete Recent Post
+    button(class= "delete_post_button" type="submit") Create New Post
+
+  div(class="blog_container") 
     each item in data 
-      li 
-        span #{item.blog_title} - #{item.blog_txt} 
+      div(class="blog_post")  
+        h2(class="blog_post_title") #{item.blog_title}
+        hr
+        p(class="blog_post_txt") #{item.blog_txt} 
       br
   br
 
@@ -18,7 +25,3 @@ block content
     input(type="txt" name="blog_txt" id="blog_txt")
     button(type="submit")
       p Submit 
-
-  form(method="POST" action="/delete")
-    button(type="submit")
-      p Delete Top
