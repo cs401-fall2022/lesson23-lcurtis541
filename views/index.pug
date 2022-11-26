@@ -20,8 +20,7 @@ block content
 
   form(method="POST" action="/add")
     p Title
-    input(type="txt" name="blog_title" id="blog_title")
+    input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title")
     p Body
-    input(type="txt" name="blog_txt" id="blog_txt")
-    button(type="submit")
-      p Submit 
+    input(type="txt" name="blog_txt" id="blog_txt" class="blog_input" placeholder="Post Text")
+    button(type="submit" class="submit_button") Submit 
