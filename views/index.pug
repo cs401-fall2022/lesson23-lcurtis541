@@ -4,19 +4,14 @@ block content
   h1(class="title") Landon's Blog 
   hr
 
-  div(class="button_container")
-    form(method="POST" action="/delete")
-      button(class= "delete_post_button" type="submit")
-        p(class="button_text") Delete Recent Post
-    button(class= "delete_post_button" type="submit")
-      p(class="button_text") Create New Post
-
   div(class="blog_container") 
     each item in data 
       div(class="blog_post")
         div(class="blog_post_title_container")
           h2(class="blog_post_title") #{item.blog_title}
-        hr
+          form(method="POST" action="/delete")
+            input(type="hidden" id="blog_title" name="blog_title" value=item.blog_title)
+            button(class= "delete_post_button" type="submit") X
         p(class="blog_post_txt") #{item.blog_txt} 
       br
   br
@@ -25,6 +20,20 @@ block content
     h2(class="blog_forum_title") Create New Post
     hr
     form(method="POST" action="/add" class="blog_forum")
-      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title")
-      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input" placeholder="Post Text")
+      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title" required)
+      div 
+      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="Post Text" required)
+      div 
       button(type="submit" class="submit_button") Submit 
+
+  div(class="blog_forum_container2")
+    h2(class="blog_forum_title") Edit Existing Post
+    hr
+    form(method="POST" action="/edit" class="blog_forum")
+      input(type="txt" name="old_blog_title" id="old_blog_title" class="blog_input" placeholder="Current Blog Title" required)
+      div 
+      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="New Blog Title" required)
+      div 
+      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="New Post Text" required)
+      div 
+      button(type="submit" class="submit_button") Submit
