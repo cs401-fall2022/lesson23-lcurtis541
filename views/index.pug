@@ -6,21 +6,25 @@ block content
 
   div(class="button_container")
     form(method="POST" action="/delete")
-      button(class= "delete_post_button" type="submit") Delete Recent Post
-    button(class= "delete_post_button" type="submit") Create New Post
+      button(class= "delete_post_button" type="submit")
+        p(class="button_text") Delete Recent Post
+    button(class= "delete_post_button" type="submit")
+      p(class="button_text") Create New Post
 
   div(class="blog_container") 
     each item in data 
-      div(class="blog_post")  
-        h2(class="blog_post_title") #{item.blog_title}
+      div(class="blog_post")
+        div(class="blog_post_title_container")
+          h2(class="blog_post_title") #{item.blog_title}
         hr
         p(class="blog_post_txt") #{item.blog_txt} 
       br
   br
 
-  form(method="POST" action="/add")
-    p Title
-    input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title")
-    p Body
-    input(type="txt" name="blog_txt" id="blog_txt" class="blog_input" placeholder="Post Text")
-    button(type="submit" class="submit_button") Submit 
+  div(class="blog_forum_container")
+    h2(class="blog_forum_title") Create New Post
+    hr
+    form(method="POST" action="/add" class="blog_forum")
+      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title")
+      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input" placeholder="Post Text")
+      button(type="submit" class="submit_button") Submit 
