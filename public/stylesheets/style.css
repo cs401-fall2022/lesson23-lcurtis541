@@ -12,6 +12,12 @@ a {
   text-align: center;
 }
 
+.button_container{
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
 .blog_post{
   display: inline-block;
   text-align: left;
@@ -23,8 +29,6 @@ a {
 
 .blog_post_title_container{
   display: flex;
-  justify-content: space-between;
-  vertical-align: middle;
 }
 
 .blog_post_title{
@@ -32,7 +36,8 @@ a {
   margin-bottom: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  width: 100%;
+  display: flex;
+  flex-grow: 1;
   color: #4E5166;
   font-family: 'Raleway',sans-serif;
 }
@@ -42,17 +47,6 @@ a {
   margin-bottom: 5px;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-.title{ 
-  color: #00B7FF;
-  font-family: 'Raleway',sans-serif;
-  font-size: 62px;
-  font-weight: 800;
-  line-height: 72px;
-  margin: 0 0 24px;
-  text-align: center;
-  text-transform: uppercase; 
 }
 
 .blog_forum_title{
@@ -172,13 +166,12 @@ a {
 }
 
 .blog_forum_container{
+  display: none;
   background-color: white;
-  position: absolute;
-  top: 15vh;
-  left: 5vw;
   outline: auto;
-  display: block;
-  width: 500px;
+  justify-content: center;
+  text-align: center;
+  width:50vw;
 }
 
 .blog_forum_container2{
@@ -187,6 +180,82 @@ a {
   top: 15vh;
   left: 72vw;
   outline: auto;
-  display: block;
+  display: none;
   width: 500px;
+}
+
+.edit_dialog{
+  background-color: white;
+  border: black;
+  display: none;
+  width: 100%;
+}
+
+.title_class {
+  text-align: center;
+  text-transform: uppercase; 
+}
+
+.title_class h1 {
+  color: #fff;
+  font-size: 62px;
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  text-align: center;
+  text-transform: uppercase; 
+  font-family: 'Raleway',sans-serif;
+  transform: translate(-50%, -50%);
+}
+
+.title{ 
+  color: #00B7FF;
+  font-family: 'Raleway',sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
+  text-align: center;
+  text-transform: uppercase; 
+}
+
+.title_class h1:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #03a9f4;
+}
+
+.title_class h1:nth-child(2) {
+  color: #03a9f4;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
 }

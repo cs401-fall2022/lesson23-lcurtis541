@@ -1,30 +1,45 @@
 extends layout
 
 block content
-  h1(class="title") Landon's Blog 
+  script
+    include ../public/js/methods.js
+  div(class="title_class")
+    h1 Landon's Blog 
+    h1 Landon's Blog 
+
+  br
   hr
+
+  div(class="button_container")
+    button(class= "delete_post_button" type="submit" onclick="toggleDiv(\"blog_forum_container\")") Create New Post
+    div(class="blog_forum_container")
+      h2(class="blog_forum_title") Create New Post
+      hr
+      form(method="POST" action="/add" class="blog_forum")
+        input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title" required)
+        div 
+        input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="Post Text" required)
+        div 
+        button(type="submit" class="submit_button") Submit
 
   div(class="blog_container") 
     each item in data 
       div(class="blog_post")
         div(class="blog_post_title_container")
           h2(class="blog_post_title") #{item.blog_title}
+          button(class= "delete_post_button" type="submit" onclick="toggleEdit(\""+item.blog_title+"\")") Edit 
+          form(method="POST" action="/edit" class="edit_dialog" name=item.blog_title)
+            input(type="hidden" name="old_blog_title" id="old_blog_title" value=item.blog_title)
+            input(type="txt" name="blog_title" id="blog_title" class="blog_input" value=item.blog_title placeholder="Title" required)
+            input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" value=item.blog_txt placeholder="Post Text" required)
+            button(type="submit" class="submit_button") Submit 
           form(method="POST" action="/delete")
             input(type="hidden" id="blog_title" name="blog_title" value=item.blog_title)
             button(class= "delete_post_button" type="submit") X
         p(class="blog_post_txt") #{item.blog_txt} 
       br
   br
-
-  div(class="blog_forum_container")
-    h2(class="blog_forum_title") Create New Post
-    hr
-    form(method="POST" action="/add" class="blog_forum")
-      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title" required)
-      div 
-      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="Post Text" required)
-      div 
-      button(type="submit" class="submit_button") Submit 
+ 
 
   div(class="blog_forum_container2")
     h2(class="blog_forum_title") Edit Existing Post
@@ -32,7 +47,7 @@ block content
     form(method="POST" action="/edit" class="blog_forum")
       input(type="txt" name="old_blog_title" id="old_blog_title" class="blog_input" placeholder="Current Blog Title" required)
       div 
-      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="New Blog Title" required)
+      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="New Blog Title" value required)
       div 
       input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="New Post Text" required)
       div 
