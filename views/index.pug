@@ -16,9 +16,9 @@ block content
       h2(class="blog_forum_title") Create New Post
       hr
       form(method="POST" action="/add" class="blog_forum")
-        input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title" required)
+        input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="Title" autocomplete="off" required)
         div 
-        input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="Post Text" required)
+        input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="Post Text" autocomplete="off" required)
         div 
         button(type="submit" class="submit_button") Submit
 
@@ -40,15 +40,3 @@ block content
       br
   br
  
-
-  div(class="blog_forum_container2")
-    h2(class="blog_forum_title") Edit Existing Post
-    hr
-    form(method="POST" action="/edit" class="blog_forum")
-      input(type="txt" name="old_blog_title" id="old_blog_title" class="blog_input" placeholder="Current Blog Title" required)
-      div 
-      input(type="txt" name="blog_title" id="blog_title" class="blog_input" placeholder="New Blog Title" value required)
-      div 
-      input(type="txt" name="blog_txt" id="blog_txt" class="blog_input_body" placeholder="New Post Text" required)
-      div 
-      button(type="submit" class="submit_button") Submit

@@ -172,6 +172,10 @@ a {
   justify-content: center;
   text-align: center;
   width:50vw;
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 .blog_forum_container2{
